@@ -1,6 +1,6 @@
 name: memcached
 description: Simple in-memory key to object cache with expiry
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/ArcaneArts/memcached
 environment:
   sdk: '>=2.18.4 <3.0.0'

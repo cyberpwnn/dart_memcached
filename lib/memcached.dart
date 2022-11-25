@@ -15,6 +15,11 @@ Lock getLock(String key) {
   return cacheLocks[key]!;
 }
 
+void invalidateCached(String id) =>
+    getLock(id).synchronized(() => _lazyCaches.remove(id));
+
+void invalidateCachedSync(String id) => _lazyCachesSync.remove(id);
+
 Future<T> getCached<T>(
         {required String id,
         required ValueGetter<Future<T>> getter,
