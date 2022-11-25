@@ -1,7 +1,8 @@
 library memcached;
 
-import 'package:flutter/material.dart';
 import 'package:synchronized/synchronized.dart';
+
+typedef ValueGetter<T> = T Function();
 
 Map<String, Lock> cacheLocks = {};
 Map<String, LazyCache<dynamic>> _lazyCaches = {};
