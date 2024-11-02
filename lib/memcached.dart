@@ -4,16 +4,20 @@ import 'package:synchronized/synchronized.dart';
 
 typedef ValueGetter<T> = T Function();
 
-Map<String, Lock> cacheLocks = {};
+Map<String, Lock> _cacheLocks = {};
 Map<String, LazyCache<dynamic>> _lazyCaches = {};
 Map<String, LazyCacheSync<dynamic>> _lazyCachesSync = {};
 
+Map<String, Lock> get cacheLocks => _cacheLocks;
+Map<String, LazyCache<dynamic>> get lazyCaches => _lazyCaches;
+Map<String, LazyCacheSync<dynamic>> get lazyCachesSync => _lazyCachesSync;
+
 Lock getLock(String key) {
-  if (!cacheLocks.containsKey(key)) {
-    cacheLocks[key] = Lock(reentrant: true);
+  if (!_cacheLocks.containsKey(key)) {
+    _cacheLocks[key] = Lock(reentrant: true);
   }
 
-  return cacheLocks[key]!;
+  return _cacheLocks[key]!;
 }
 
 void invalidateCached(String id) =>

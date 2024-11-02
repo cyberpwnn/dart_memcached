@@ -1,3 +1,7 @@
+## 1.1.0
+* Allow direct cache access
+* Upgrade synchronized constraint
+
 ## 1.0.2
 
 * Drop flutter requirement
